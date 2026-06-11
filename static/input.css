@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@source "../templates/**/*.html";
+@source "./script.js";
+
+@custom-variant dark{
+    &:where(.dark, .dark *) {
+        @slot;
+    }
+}

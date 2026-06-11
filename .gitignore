@@ -1,0 +1,10 @@
+.env
+app.log
+.coverage
+.DS_Store
+venv/
+static/output.css
+node_modules/
+.vscode
+__pycache__/
+.pytest_cache/
