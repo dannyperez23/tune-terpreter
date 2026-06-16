@@ -123,7 +123,7 @@ Run the tests with:
 pytest
 ```
 
-The test suite contains 21 test cases across three files:
+The test suite contains 22 test cases across three files:
 
 -   `tests/test_lyrics.py` - unit tests for `fetch_lyrics`
 -   `tests/test_interpretation.py` - unit tests for `interpret_lyrics`
@@ -151,7 +151,7 @@ Testing approach:
 -   End-to-end testing: Add browser-based testing, Selenium, to verify the complete user experience beyond unit and integration testing.
 -   Prompt refinement: Continue tuning the LLM prompt to generate better quality interpretations across diverse music genres and lyrics complexity.
 -   Lyrics & response caching: Give users access to previous lyrics & interpretation pairs within the same session to reduce API and LLM usage.
--   Improved error handling: implement handlers for Genius authentication, rate limit, and timeout errors. Implement handler for OpenAI timeout error.
+-   Improved error handling: implement handlers for Genius authentication, rate limit, and timeout errors.
 
 ## License
 

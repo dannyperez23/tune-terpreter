@@ -28,7 +28,8 @@ app = Flask(__name__)
 limiter = Limiter (
     app=app,
     key_func=get_remote_address,
-    default_limits=["100 per day", "10 per minute"]
+    default_limits=["100 per day", "10 per minute"],
+    storage_uri="memory://"
 )
 
 # Validate and set API keys
@@ -114,6 +115,9 @@ def interpret_lyrics(lyrics):
     except openai.AuthenticationError:
         logger.error("OpenAI authentication failed")
         raise OpenAIServiceError("Authentication failed")
+    except openai.APITimeoutError:
+        logger.error("OpenAI request timed out")
+        raise OpenAIServiceError("Timeout error")
     except Exception as e:
         logger.error(f"An unexpected error occurred, {e}")
         raise OpenAIServiceError(str(e))

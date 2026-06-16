@@ -54,6 +54,20 @@ def test_interpret_lyrics_auth_error(mocker, caplog):
 
     assert "OpenAI authentication failed" in caplog.text
 
+def test_interpret_lyrics_timeout_error(mocker, caplog):
+    mock_client = mocker.Mock()
+    mock_client.chat.completions.create.side_effect = openai.APITimeoutError(
+        request=mocker.Mock()
+    )
+
+    mocker.patch('openai.OpenAI', return_value=mock_client)
+
+    with caplog.at_level(logging.ERROR):
+        with pytest.raises(OpenAIServiceError):
+            interpret_lyrics("Test lyrics")
+
+    assert "OpenAI request timed out" in caplog.text
+
 def test_interpret_lyrics_generic_error(mocker, caplog):
     """Test handling of generic errors"""
     mock_client = mocker.Mock()
