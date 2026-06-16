@@ -13,7 +13,7 @@ def test_search_success(client, mocker):
 
     #Mock the OpenAI APi call
     mock_interpreter = mocker.patch('app.interpret_lyrics')
-    mock_interpreter.return_value = "This song is about raging against the machine"
+    mock_interpreter.return_value = "Sample interpretation"
 
     #Make request to /search endpoint
     response = client.post('/search', json={'song': 'Test Song', 'artist': 'Test Artist'})
@@ -24,7 +24,7 @@ def test_search_success(client, mocker):
     assert 'lyrics' in data
     assert 'summary' in data
     assert data['lyrics'] == "Sample lyrics here\nLine 2\nLine3"
-    assert data['summary'] == "This song is about raging against the machine"
+    assert data['summary'] == "Sample interpretation"
 
 
 def test_search_missing_song(client):
@@ -109,3 +109,20 @@ def test_search_openai_service_error(client, mocker):
     assert response.status_code == 502
     data = response.get_json()
     assert 'error' in data
+
+def test_search_limiting_error(client_limiting_enabled, mocker):
+    mock_fetch_lyrics = mocker.patch('app.fetch_lyrics')
+    mock_fetch_lyrics.return_value = "Sample lyrics"
+
+    mock_interpreter = mocker.patch('app.interpret_lyrics')
+    mock_interpreter.return_value = "Sample interpretation"
+
+    for i in range(6):
+        response = client_limiting_enabled.post('/search', json={'song': 'Test Song', 'artist': 'Test Artist'})
+
+    assert response.status_code == 429
+    data = response.get_json()
+    assert 'error' in data
+
+
+    
