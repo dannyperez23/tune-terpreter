@@ -116,6 +116,7 @@ flask run
 ## Testing
 
 The project includes a testing suite using pytest and pytest-mock.
+A formal [test plan] documenting the testing strategy, scope, test cases, test environment, entry & exit criteria, and risks & assumptions is available in the `docs/` directory
 
 Run the tests with:
 
@@ -134,7 +135,7 @@ Testing approach:
 -   External APIs are mocked to avoid network dependencies and reduce costs for LLM usage
 -   Custom exceptions are verified using `pytest.raises`
 -   Error logging is verified using `caplog`
--   Edge cases tested include: empty strings, API errors, missing fields, rate limit, and authentication error responses
+-   Edge cases tested include: empty strings, API errors, missing fields, rate limit, timeout, and authentication error responses
 -   Rate limiting is verified using a dedicated client fixture and test case in `tests/test_app.py`
 
 ## Security Considerations
