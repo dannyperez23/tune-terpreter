@@ -116,7 +116,7 @@ flask run
 ## Testing
 
 The project includes a testing suite using pytest and pytest-mock.
-A formal [test plan] documenting the testing strategy, scope, test cases, test environment, entry & exit criteria, and risks & assumptions is available in the `docs/` directory
+A formal [test plan](docs/TEST_PLAN.pdf) documenting the testing strategy, scope, test cases, test environment, entry & exit criteria, and risks & assumptions is available in the `docs/` directory
 
 Run the tests with:
 
