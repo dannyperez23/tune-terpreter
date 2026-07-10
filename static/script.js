@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('search_form');
     const errorDisplay = document.getElementById('error_display');
     const loadingDisplay = document.getElementById('loading_display');
+    const lyricsDisplay = document.getElementById('lyrics_display');
+    const summaryDisplay = document.getElementById('summary_display');
     const lyricsBox = document.getElementById('lyrics_box');
     const summaryBox = document.getElementById('summary_box');
     const savedTheme = localStorage.getItem('theme');
@@ -35,7 +37,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         errorDisplay.classList.add('hidden');
         errorDisplay.textContent = '';
+        lyricsDisplay.classList.add('hidden');
         lyricsBox.textContent = '';
+        summaryDisplay.classList.add('hidden');
         summaryBox.textContent = '';
         
         loadingDisplay.classList.remove('hidden');
@@ -51,7 +55,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if(!response.ok){
                 throw new Error(data.error || "Request failed.");
             }
-            
+
+            lyricsDisplay.classList.remove('hidden');
+            summaryDisplay.classList.remove('hidden');
             lyricsBox.textContent = data.lyrics;
             summaryBox.textContent = data.summary;
 

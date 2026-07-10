@@ -37,7 +37,7 @@
                 dark:bg-gray-800 dark:border-gray-600">
 
             <button id="search_button" type="submit"
-            class="w-full px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
+                class="w-full px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
                 Search
             </button>
         </form>
@@ -55,14 +55,14 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div class="bg-white p-6 shadow-sm border border-gray-200 rounded-lg
-                dark:bg-gray-800 dark:border-gray-700">
+            <div id="lyrics_display" 
+                class="hidden bg-white p-6 shadow-sm border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                 <h2 class="text-xl font-semibold mb-3">Lyrics</h2>
                 <p id="lyrics_box" class="whitespace-pre-wrap"></p>
             </div>
             
-            <div class="bg-white p-6 shadow-sm border border-gray-200 rounded-lg
-                dark:bg-gray-800 dark:border-gray-700">
+            <div id="summary_display" 
+                class="hidden bg-white p-6 shadow-sm border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                 <h2 class="text-xl font-semibold mb-3">Interpretation</h2>
                 <p id="summary_box" class="whitespace-pre-wrap"></p>
             </div>
